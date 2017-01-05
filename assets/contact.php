@@ -8,34 +8,31 @@ function isEmail($email) {
 if($_POST) {
 
    // Enter the email where you want to receive the message
-   $emailTo = array(
-      'heshan@hyferweb.com',
-      'adam@hyferweb.com',
-      'mohit@hyferweb.com');
+   $emailTo = 'heshan@hyferweb.com , adam@hyferweb.com , mohit@hyferweb.com' ;
 
-      $clientEmail = addslashes(trim($_POST['email']));
-      $subject = addslashes(trim($_POST['subject']));
-      $message = addslashes(trim($_POST['message']));
+   $clientEmail = addslashes(trim($_POST['email']));
+   $subject = addslashes(trim($_POST['subject']));
+   $message = addslashes(trim($_POST['message']));
 
-      $array = array('emailMessage' => '', 'subjectMessage' => '', 'messageMessage' => '');
+   $array = array('emailMessage' => '', 'subjectMessage' => '', 'messageMessage' => '');
 
-      if(!isEmail($clientEmail)) {
-         $array['emailMessage'] = 'Invalid email!';
-      }
-      if($subject == '') {
-         $array['subjectMessage'] = 'Empty subject!';
-      }
-      if($message == '') {
-         $array['messageMessage'] = 'Empty message!';
-      }
-      if(isEmail($clientEmail) && $subject != '' && $message != '') {
-         // Send email
-         $headers = "From: " . $clientEmail . " <" . $clientEmail . ">" . "\r\n" . "Reply-To: " . $clientEmail;
-         mail($emailTo, $subject . " (seria)", $message, $headers);
-      }
-
-      echo json_encode($array);
-
+   if(!isEmail($clientEmail)) {
+      $array['emailMessage'] = 'Invalid email!';
+   }
+   if($subject == '') {
+      $array['subjectMessage'] = 'Empty subject!';
+   }
+   if($message == '') {
+      $array['messageMessage'] = 'Empty message!';
+   }
+   if(isEmail($clientEmail) && $subject != '' && $message != '') {
+      // Send email
+      $headers = "From: " . $clientEmail . " <" . $clientEmail . ">" . "\r\n" . "Reply-To: " . $clientEmail;
+      mail($emailTo, $subject . " (seria)", $message, $headers);
    }
 
-   ?>
+   echo json_encode($array);
+
+}
+
+?>
