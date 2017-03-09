@@ -10,7 +10,7 @@ function isEmail($email) {
 if($_POST) {
 
     // Enter the email where you want to receive the notification when someone subscribes
-    $emailTo = 'heshan@hyferweb.com';
+    $emailTo = 'heshan@hyferweb.com , mohit@hyferweb.com' ;
 
     $subscriber_email = addslashes(trim($_POST['email']));
 
